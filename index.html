@@ -12,8 +12,8 @@
 	<div class="choosestream">
 		<input type="text" name="streamusername" id="streamusername" placeholder="Twitch Username"><button type="button" name="submitstream" id="submitstream">Go</button>
 	</div>
-	<iframe src="http://www.twitch.tv/twitch/embed" width="300" height="150" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" class="stream"></iframe>
-	<iframe src="http://www.twitch.tv/twitch/chat" width="300" height="150" frameborder="0" scrolling="no" class="chat"></iframe>
+	<iframe src="https://www.twitch.tv/twitch/embed" width="300" height="150" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" class="stream"></iframe>
+	<iframe src="https://www.twitch.tv/twitch/chat" width="300" height="150" frameborder="0" scrolling="no" class="chat"></iframe>
 </div>
 <div class="gamesite">
 	<div class="choosegame">
@@ -23,25 +23,25 @@
 		</select>
 		<button type="button" name="submitgame" id="submitgame">Go</button>
 	</div>
-	<iframe src="http://jackbox.tv" width="750" height="844" frameborder="0" scrolling="no" class="game"></iframe>
+	<iframe src="https://jackbox.tv" width="750" height="844" frameborder="0" scrolling="no" class="game"></iframe>
 </div>
-<script src="http://code.jquery.com/jquery-2.1.4.min.js" language="javascript" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js" language="javascript" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" language="javascript" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
 	var streamframe = $(".stream");
     var chatframe = $(".chat");
     var gameframe = $(".game");
 	function changestream(streamusername){
-		$(".stream").attr('src', "http://www.twitch.tv/" + streamusername + "/embed");
-		$(".chat").attr('src', "http://www.twitch.tv/" + streamusername + "/chat");
+		$(".stream").attr('src', "https://www.twitch.tv/" + streamusername + "/embed");
+		$(".chat").attr('src', "https://www.twitch.tv/" + streamusername + "/chat");
 		document.title = streamusername + " - Party Game Stream Viewer";
     }
 	function changegame(gamename){
 		if (gamename == "jackbox") {
-			$(".game").attr('src', "http://www.jackbox.tv");
+			$(".game").attr('src', "https://www.jackbox.tv");
 		}
 		if (gamename == "useryourwords") {
-			$(".game").attr('src', "http://www.wordsgame.lol");
+			$(".game").attr('src', "https://www.wordsgame.lol");
 		}
     }
 	$(function(){
