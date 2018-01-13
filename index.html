@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<title>Party Game Stream Viewer</title>
+		<meta name="description" content="Easily play Jackbox games or Use Your Words while watching the streamer you are playing with at the same time!">
+		<link rel="stylesheet" href="style.css" />
+		<script language="javascript" type="text/javascript">
+			if (window!= top) top.location.href = location.href;
+		</script>
+	</head>
+<body>
+<div class="streamandchat">
+	<div class="choosestream">
+		<input type="text" name="streamusername" id="streamusername" placeholder="Twitch Username"><button type="button" name="submitstream" id="submitstream">Go</button>
+	</div>
+	<iframe src="http://www.twitch.tv/twitch/embed" width="300" height="150" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" class="stream"></iframe>
+	<iframe src="http://www.twitch.tv/twitch/chat" width="300" height="150" frameborder="0" scrolling="no" class="chat"></iframe>
+</div>
+<div class="gamesite">
+	<div class="choosegame">
+		<select name="gamename" id="gamename">
+			<option value="jackbox">Jackbox</option>
+			<option value="useryourwords">Use Your Words</option>
+		</select>
+		<button type="button" name="submitgame" id="submitgame">Go</button>
+	</div>
+	<iframe src="http://jackbox.tv" width="750" height="844" frameborder="0" scrolling="no" class="game"></iframe>
+</div>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js" language="javascript" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" language="javascript" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+	var streamframe = $(".stream");
+    var chatframe = $(".chat");
+    var gameframe = $(".game");
+	function changestream(streamusername){
+		$(".stream").attr('src', "http://www.twitch.tv/" + streamusername + "/embed");
+		$(".chat").attr('src', "http://www.twitch.tv/" + streamusername + "/chat");
+		document.title = streamusername + " - Party Game Stream Viewer";
+    }
+	function changegame(gamename){
+		if (gamename == "jackbox") {
+			$(".game").attr('src', "http://www.jackbox.tv");
+		}
+		if (gamename == "useryourwords") {
+			$(".game").attr('src', "http://www.wordsgame.lol");
+		}
+    }
+	$(function(){
+		$("#submitstream").click(function(){
+			changestream($("#streamusername").val());
+		});
+		$("#submitgame").click(function(){
+			changegame($("#gamename").val());
+		});
+	});
+</script>
+</body>
+</html>
