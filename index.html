@@ -37,57 +37,58 @@
 <script language="javascript" type="text/javascript">
 	var streamsite = "twitch";
 	var streamframe = $(".stream");
-    var chatframe = $(".chat");
-    var gameframe = $(".game");
-	function changestream(streamusername){
-		if (streamsite == "twitch"){
+	var chatframe = $(".chat");
+	var gameframe = $(".game");
+	function changestream(streamusername) {
+		if (streamsite == "twitch") {
 			$(".stream").attr('src', "https://www.twitch.tv/" + streamusername + "/embed");
 			$(".chat").attr('src', "https://www.twitch.tv/" + streamusername + "/chat");
-		}
-		else if (streamsite == "smashcast"){
+		} else if (streamsite == "smashcast") {
 			$(".stream").attr('src', "https://www.smashcast.tv/embed/" + streamusername + "?autoplay=true");
 			$(".chat").attr('src', "https://www.smashcast.tv/embed/chat/" + streamusername + "?autoconnect=true");
-		}
-		else if (streamsite == "mixer") {
+		} else if (streamsite == "mixer") {
 			$(".stream").attr('src', "https://www.mixer.com/embed/player/" + streamusername);
 			$(".chat").attr('src', "https://www.mixer.com/embed/chat/" + streamusername);
-		}
-		else if (streamsite == "youtube") {
+		} else if (streamsite == "youtube") {
 			$(".stream").attr('src', "https://gaming.youtube.com/embed/" + streamusername + "?autoplay=1");
 			$(".chat").attr('src', "https://gaming.youtube.com/live_chat?v=" + streamusername + "&embed_domain=decimic.github.io");
 		}
 		document.title = streamusername + " - Party Game Stream Viewer";
-    }
-	function changesite(){
+	}
+	function changesite() {
 		streamsite = document.getElementById("streamsite").value;
-		if (streamsite == "twitch"){
-			document.getElementsByName('streamusername')[0].placeholder='Twitch Username';
-		}
-		else if (streamsite == "smashcast"){
-			document.getElementsByName('streamusername')[0].placeholder='Smashcast Username';
-		}
-		else if (streamsite == "mixer") {
-			document.getElementsByName('streamusername')[0].placeholder='Mixer Username';
-		}
-		else if (streamsite == "youtube") {
-			document.getElementsByName('streamusername')[0].placeholder='YouTube Video ID';
+		if (streamsite == "twitch") {
+			document.getElementsByName('streamusername')[0].placeholder = 'Twitch Username';
+		} else if (streamsite == "smashcast") {
+			document.getElementsByName('streamusername')[0].placeholder = 'Smashcast Username';
+		} else if (streamsite == "mixer") {
+			document.getElementsByName('streamusername')[0].placeholder = 'Mixer Username';
+		} else if (streamsite == "youtube") {
+			document.getElementsByName('streamusername')[0].placeholder = 'YouTube Video ID';
 		}
 	}
-	function changegame(gamename){
+	function changegame(gamename) {
 		if (gamename == "jackbox") {
 			$(".game").attr('src', "https://jackbox.tv");
 		}
 		if (gamename == "useryourwords") {
 			$(".game").attr('src', "https://wordsgame.lol");
 		}
-    }
-	$(function(){
-		$("#submitstream").click(function(){
+	}
+	$(function () {
+		$("#submitstream").click(function () {
 			changestream($("#streamusername").val());
 		});
-		$("#submitgame").click(function(){
+		$("#submitgame").click(function () {
 			changegame($("#gamename").val());
 		});
+	});
+	document.getElementById("streamusername")
+	.addEventListener("keyup", function (event) {
+		event.preventDefault();
+		if (event.keyCode === 13) {
+			document.getElementById("submitstream").click();
+		}
 	});
 </script>
 </body>
