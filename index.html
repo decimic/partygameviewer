@@ -7,89 +7,95 @@
 			if (window!= top) top.location.href = location.href;
 		</script>
 	</head>
-<body>
-<div class="streamandchat">
-	<div class="choosestream">
-		<select name="streamsite" id="streamsite" onChange="changesite()">
-			<option value="twitch">Twitch</option>
-			<option value="smashcast">Smashcast</option>
-			<option value="mixer">Mixer</option>
-			<option value="youtube">YouTube</option>
-		</select>
-		<input type="text" name="streamusername" id="streamusername" placeholder="Twitch Username">
-		<button type="button" name="submitstream" id="submitstream">Go</button>
-	</div>
-	<iframe src="https://www.twitch.tv/twitch/embed" width="300" height="150" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" class="stream"></iframe>
-	<iframe src="https://www.twitch.tv/twitch/chat" width="300" height="150" frameborder="0" scrolling="no" class="chat"></iframe>
-</div>
-<div class="gamesite">
-	<div class="choosegame">
-		<select name="gamename" id="gamename">
-			<option value="jackbox">Jackbox</option>
-			<option value="useryourwords">Use Your Words</option>
-		</select>
-		<button type="button" name="submitgame" id="submitgame">Go</button>
-	</div>
-	<iframe src="https://jackbox.tv" width="750" height="844" frameborder="0" scrolling="no" class="game"></iframe>
-</div>
-<script src="https://code.jquery.com/jquery-2.1.4.min.js" language="javascript" type="text/javascript"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" language="javascript" type="text/javascript"></script>
-<script language="javascript" type="text/javascript">
-	var streamsite = "twitch";
-	var streamframe = $(".stream");
-	var chatframe = $(".chat");
-	var gameframe = $(".game");
-	function changestream(streamusername) {
-		if (streamsite == "twitch") {
-			$(".stream").attr('src', "https://www.twitch.tv/" + streamusername + "/embed");
-			$(".chat").attr('src', "https://www.twitch.tv/" + streamusername + "/chat");
-		} else if (streamsite == "smashcast") {
-			$(".stream").attr('src', "https://www.smashcast.tv/embed/" + streamusername + "?autoplay=true");
-			$(".chat").attr('src', "https://www.smashcast.tv/embed/chat/" + streamusername + "?autoconnect=true");
-		} else if (streamsite == "mixer") {
-			$(".stream").attr('src', "https://www.mixer.com/embed/player/" + streamusername);
-			$(".chat").attr('src', "https://www.mixer.com/embed/chat/" + streamusername);
-		} else if (streamsite == "youtube") {
-			$(".stream").attr('src', "https://gaming.youtube.com/embed/" + streamusername + "?autoplay=1");
-			$(".chat").attr('src', "https://gaming.youtube.com/live_chat?v=" + streamusername + "&embed_domain=decimic.github.io");
-		}
-		document.title = streamusername + " - Party Game Stream Viewer";
-	}
-	function changesite() {
-		streamsite = document.getElementById("streamsite").value;
-		if (streamsite == "twitch") {
-			document.getElementsByName('streamusername')[0].placeholder = 'Twitch Username';
-		} else if (streamsite == "smashcast") {
-			document.getElementsByName('streamusername')[0].placeholder = 'Smashcast Username';
-		} else if (streamsite == "mixer") {
-			document.getElementsByName('streamusername')[0].placeholder = 'Mixer Username';
-		} else if (streamsite == "youtube") {
-			document.getElementsByName('streamusername')[0].placeholder = 'YouTube Video ID';
-		}
-	}
-	function changegame(gamename) {
-		if (gamename == "jackbox") {
-			$(".game").attr('src', "https://jackbox.tv");
-		}
-		if (gamename == "useryourwords") {
-			$(".game").attr('src', "https://wordsgame.lol");
-		}
-	}
-	$(function () {
-		$("#submitstream").click(function () {
-			changestream($("#streamusername").val());
-		});
-		$("#submitgame").click(function () {
-			changegame($("#gamename").val());
-		});
-	});
-	document.getElementById("streamusername")
-	.addEventListener("keyup", function (event) {
-		event.preventDefault();
-		if (event.keyCode === 13) {
-			document.getElementById("submitstream").click();
-		}
-	});
-</script>
-</body>
+	<body>
+		<div class="streamandchat">
+			<div class="choosestream">
+				<select name="streamsite" id="streamsite" onChange="changesite()">
+					<option value="twitch">Twitch</option>
+					<option value="smashcast">Smashcast</option>
+					<option value="mixer">Mixer</option>
+					<option value="youtube">YouTube</option>
+				</select>
+				<input type="text" name="streamusername" id="streamusername" placeholder="Twitch Username">
+				<button type="button" name="submitstream" id="submitstream">Go</button>
+			</div>
+			<div class="streamframe">
+				<iframe src="news.html" width="300" height="150" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" class="stream"></iframe>
+			</div>
+			<div class="chatframe">
+				<iframe src="help.html" width="300" height="150" frameborder="0" scrolling="no" class="chat"></iframe>
+			</div>
+		</div>
+		<div class="gamesite">
+			<div class="choosegame">
+				<select name="gamename" id="gamename">
+					<option value="jackbox">Jackbox</option>
+					<option value="useryourwords">Use Your Words</option>
+				</select>
+				<button type="button" name="submitgame" id="submitgame">Go</button>
+			</div>
+			<iframe src="https://jackbox.tv" width="750" height="844" frameborder="0" scrolling="no" class="game"></iframe>
+		</div>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js" language="javascript" type="text/javascript"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" language="javascript" type="text/javascript"></script>
+		<script language="javascript" type="text/javascript">
+			var streamsite = "twitch";
+			var streamframe = $(".stream");
+			var chatframe = $(".chat");
+			var gameframe = $(".game");
+			function changestream(streamusername) {
+				if (streamsite == "twitch") {
+					$(".stream").attr('src', "https://www.twitch.tv/" + streamusername + "/embed");
+					$(".chat").attr('src', "https://www.twitch.tv/" + streamusername + "/chat");
+					document.title = streamusername + " on Twitch - Party Game Stream Viewer";
+				} else if (streamsite == "smashcast") {
+					$(".stream").attr('src', "https://www.smashcast.tv/embed/" + streamusername + "?autoplay=true");
+					$(".chat").attr('src', "https://www.smashcast.tv/embed/chat/" + streamusername + "?autoconnect=true");
+					document.title = streamusername + " on Smashcast - Party Game Stream Viewer";
+				} else if (streamsite == "mixer") {
+					$(".stream").attr('src', "https://www.mixer.com/embed/player/" + streamusername);
+					$(".chat").attr('src', "https://www.mixer.com/embed/chat/" + streamusername);
+					document.title = streamusername + " on Mixer - Party Game Stream Viewer";
+				} else if (streamsite == "youtube") {
+					$(".stream").attr('src', "https://gaming.youtube.com/embed/" + streamusername + "?autoplay=1");
+					$(".chat").attr('src', "https://gaming.youtube.com/live_chat?v=" + streamusername + "&embed_domain=decimic.github.io");
+					document.title = "Party Game Stream Viewer";
+				}
+			}
+			function changesite() {
+				streamsite = document.getElementById("streamsite").value;
+				if (streamsite == "twitch") {
+					document.getElementsByName('streamusername')[0].placeholder = 'Twitch Username';
+				} else if (streamsite == "smashcast") {
+					document.getElementsByName('streamusername')[0].placeholder = 'Smashcast Username';
+				} else if (streamsite == "mixer") {
+					document.getElementsByName('streamusername')[0].placeholder = 'Mixer Username';
+				} else if (streamsite == "youtube") {
+					document.getElementsByName('streamusername')[0].placeholder = 'YouTube Video ID';
+				}
+			}
+			function changegame(gamename) {
+				if (gamename == "jackbox") {
+					$(".game").attr('src', "https://jackbox.tv");
+				}
+				if (gamename == "useryourwords") {
+					$(".game").attr('src', "https://wordsgame.lol");
+				}
+			}
+			$(function () {
+				$("#submitstream").click(function () {
+					changestream($("#streamusername").val());
+				});
+				$("#submitgame").click(function () {
+					changegame($("#gamename").val());
+				});
+			});
+			document.getElementById("streamusername").addEventListener("keyup", function (event) {
+				event.preventDefault();
+				if (event.keyCode === 13) {
+					document.getElementById("submitstream").click();
+				}
+			});
+		</script>
+	</body>
 </html>
