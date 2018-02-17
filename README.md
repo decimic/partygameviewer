@@ -15,4 +15,5 @@ I like playing Jackbox Games with streamers.  While you can play games on your m
 * YouTube/YouTube Gaming
 
 ## How do I use it?
+
 Simply go to the site, select the platform the streamer is streaming on, type in their username (or Video ID for YouTube), select the game, and click Go!
