@@ -30,7 +30,7 @@
 			<div class="choosegame">
 				<select name="gamename" id="gamename">
 					<option value="jackbox">Jackbox</option>
-					<option value="useryourwords">Use Your Words</option>
+					<option value="useyourwords">Use Your Words</option>
 				</select>
 				<button type="button" name="submitgame" id="submitgame">Go</button>
 			</div>
@@ -78,7 +78,7 @@
 				if (gamename == "jackbox") {
 					$(".game").attr('src', "https://jackbox.tv");
 				}
-				if (gamename == "useryourwords") {
+				if (gamename == "useyourwords") {
 					$(".game").attr('src', "https://wordsgame.lol");
 				}
 			}
@@ -96,6 +96,30 @@
 					document.getElementById("submitstream").click();
 				}
 			});
+			function getUrlParameter(sParam) {
+				var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,
+				i;
+				for (i = 0; i < sURLVariables.length; i++) {
+					sParameterName = sURLVariables[i].split('=');
+					if (sParameterName[0] === sParam) {
+						return sParameterName[1] === undefined ? true : sParameterName[1];
+					}
+				}
+			}
+			site = getUrlParameter("site");
+			stream = getUrlParameter("stream");
+			game = getUrlParameter("game");
+			if(site == "twitch" || site == "smashcast" || site == "mixer" || site == "youtube"){
+				streamsite = site;
+			}
+			if(stream !== undefined){
+				changestream(stream);
+			}
+			if(game == "jackbox" || game == "useyourwords"){
+				changegame(game);
+			}	
 		</script>
 	</body>
 </html>

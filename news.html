@@ -10,7 +10,14 @@
 		</style>
 	</head>
 	<body>
-		<h3>Fixed Bug with Use Your Words</h3>
-		<p>We have fixed a bug that where you couldn't scroll in Use Your Words (for people with smaller monitors).<p/>
+		<h3>URL Parameters Added!</h3>
+		<p>You can now directly link for the viewer to go right to that stream!</p>
+		<h3>How to use the parameters:</h3>
+		<p><strong style="font-family: Courier New, Courier, monospace;">site=</strong> - What streaming platform to use.  Acceptable values are twitch, smashcast, mixer, and youtube.  Defaults to Twitch if omitted.</p>
+		<p><strong style="font-family: Courier New, Courier, monospace;">stream=</strong> - The username of the streamer, or the Video ID in the case of YouTube.  If omitted, shows the help and news sections instead.</p>
+		<p><strong style="font-family: Courier New, Courier, monospace;">game=</strong> - What game to load.  Acceptable values are jackbox and useyourwords.  Defaults to Jackbox if omitted.</p>
+		<h3>Example</h3>
+		<p><span style="font-family: Courier New, Courier, monospace;">https://decimic.github.io/partygameviewer/?site=mixer&amp;stream=randomuser123&amp;game=useyourwords</span></p>
+		<p>That URL will load up randomuser123's stream on Mixer, along with Use Your Words.</p>
 	</body>
 </html>
