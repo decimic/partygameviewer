@@ -18,6 +18,7 @@
 				</select>
 				<input type="text" name="streamusername" id="streamusername" placeholder="Twitch Username">
 				<button type="button" name="submitstream" id="submitstream">Go</button>
+				<span style="float: right;"><button type="button" name="directlink" id="directlink">Get Direct Link</button></span>
 			</div>
 			<div class="streamframe">
 				<iframe src="help.html" width="300" height="150" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" class="stream"></iframe>
@@ -34,16 +35,21 @@
 				</select>
 				<button type="button" name="submitgame" id="submitgame">Go</button>
 			</div>
-			<iframe src="https://jackbox.tv" width="750" height="844" frameborder="0" scrolling="yes" class="game"></iframe>
+			<div class="gameframe">
+				<iframe src="https://jackbox.tv" width="750" height="844" frameborder="0" scrolling="yes" class="game"></iframe>
+			</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js" language="javascript" type="text/javascript"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" language="javascript" type="text/javascript"></script>
 		<script language="javascript" type="text/javascript">
 			var streamsite = "twitch";
+			var streamname = "twitch";
+			var gamesite = "jackbox";
 			var streamframe = $(".stream");
 			var chatframe = $(".chat");
 			var gameframe = $(".game");
 			function changestream(streamusername) {
+				streamname = streamusername;
 				if (streamsite == "twitch") {
 					$(".stream").attr('src', "https://player.twitch.tv/?channel=" + streamusername);
 					$(".chat").attr('src', "https://www.twitch.tv/embed/" + streamusername + "/chat");
@@ -75,6 +81,7 @@
 				}
 			}
 			function changegame(gamename) {
+				gamesite = gamename;
 				if (gamename == "jackbox") {
 					$(".game").attr('src', "https://jackbox.tv");
 				}
@@ -88,6 +95,9 @@
 				});
 				$("#submitgame").click(function () {
 					changegame($("#gamename").val());
+				});
+				$("#directlink").click(function () {
+					prompt("Here is the direct link to show this stream in the viewer:","https://decimic.github.io/partygameviewer/?site=" + streamsite + "&stream=" + streamname + "&game=" + gamesite)
 				});
 			});
 			document.getElementById("streamusername").addEventListener("keyup", function (event) {
@@ -108,16 +118,18 @@
 					}
 				}
 			}
-			site = getUrlParameter("site");
+			site = getUrlParameter("site").toLowerCase();
 			stream = getUrlParameter("stream");
-			game = getUrlParameter("game");
+			game = getUrlParameter("game").toLowerCase();
 			if(site == "twitch" || site == "smashcast" || site == "mixer" || site == "youtube"){
 				streamsite = site;
 			}
 			if(stream !== undefined){
+				streamusername = stream;
 				changestream(stream);
 			}
 			if(game == "jackbox" || game == "useyourwords"){
+				gamename = game;
 				changegame(game);
 			}	
 		</script>
