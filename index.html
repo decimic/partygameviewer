@@ -16,6 +16,7 @@
 					<option value="smashcast">Smashcast</option>
 					<option value="mixer">Mixer</option>
 					<option value="youtube">YouTube</option>
+					<option value="streamme">StreamMe</option>
 				</select>
 				<input type="text" name="streamusername" id="streamusername" placeholder="Twitch Username">
 				<button type="button" name="submitstream" id="submitstream">Go</button>
@@ -71,6 +72,10 @@
 					$(".stream").attr('src', "https://gaming.youtube.com/embed/" + streamusername + "?autoplay=1");
 					$(".chat").attr('src', "https://gaming.youtube.com/live_chat?v=" + streamusername + "&embed_domain=decimic.github.io");
 					document.title = "Party Game Stream Viewer";
+				} else if (streamsite == "streamme") {
+					$(".stream").attr('src', "https://www.stream.me/stream-embed/" + streamusername + "/fullframe?hideChat=true");
+					$(".chat").attr('src', "https://www.stream.me/stream-embed/" + streamusername + "/chat-only");
+					document.title = "Party Game Stream Viewer";
 				}
 			}
 			function changesite() {
@@ -83,6 +88,8 @@
 					document.getElementsByName('streamusername')[0].placeholder = 'Mixer Username';
 				} else if (streamsite == "youtube") {
 					document.getElementsByName('streamusername')[0].placeholder = 'YouTube Video ID';
+				} else if (streamsite == "streamme") {
+					document.getElementsByName('streamusername')[0].placeholder = 'StreamMe Name';
 				}
 			}
 			function changegame(gamename) {
@@ -126,7 +133,7 @@
 			site = getUrlParameter("site").toLowerCase();
 			stream = getUrlParameter("stream");
 			game = getUrlParameter("game").toLowerCase();
-			if(site == "twitch" || site == "twitchlegacy" || site == "smashcast" || site == "mixer" || site == "youtube"){
+			if(site == "twitch" || site == "twitchlegacy" || site == "smashcast" || site == "mixer" || site == "youtube" || site == "streamme"){
 				streamsite = site;
 			}
 			if(stream !== undefined){
