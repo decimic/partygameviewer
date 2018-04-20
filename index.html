@@ -12,7 +12,6 @@
 			<div class="choosestream">
 				<select name="streamsite" id="streamsite" onChange="changesite()">
 					<option value="twitch">Twitch</option>
-					<option value="twitchlegacy">Twitch with Legacy Chat</option>
 					<option value="smashcast">Smashcast</option>
 					<option value="mixer">Mixer</option>
 					<option value="youtube">YouTube</option>
@@ -56,10 +55,6 @@
 					$(".stream").attr('src', "https://player.twitch.tv/?channel=" + streamusername);
 					$(".chat").attr('src', "https://www.twitch.tv/embed/" + streamusername + "/chat");
 					document.title = streamusername + " on Twitch - Party Game Stream Viewer";
-				} else if (streamsite == "twitchlegacy") {
-					$(".stream").attr('src', "https://player.twitch.tv/?channel=" + streamusername);
-					$(".chat").attr('src', "https://www.twitch.tv/" + streamusername + "/chat");
-					document.title = streamusername + " on Twitch - Party Game Stream Viewer";
 				} else if (streamsite == "smashcast") {
 					$(".stream").attr('src', "https://www.smashcast.tv/embed/" + streamusername + "?autoplay=true");
 					$(".chat").attr('src', "https://www.smashcast.tv/embed/chat/" + streamusername + "?autoconnect=true");
@@ -80,7 +75,7 @@
 			}
 			function changesite() {
 				streamsite = document.getElementById("streamsite").value;
-				if (streamsite == "twitch" || streamsite == "twitchlegacy") {
+				if (streamsite == "twitch") {
 					document.getElementsByName('streamusername')[0].placeholder = 'Twitch Username';
 				} else if (streamsite == "smashcast") {
 					document.getElementsByName('streamusername')[0].placeholder = 'Smashcast Username';
@@ -133,7 +128,7 @@
 			site = getUrlParameter("site").toLowerCase();
 			stream = getUrlParameter("stream");
 			game = getUrlParameter("game").toLowerCase();
-			if(site == "twitch" || site == "twitchlegacy" || site == "smashcast" || site == "mixer" || site == "youtube" || site == "streamme"){
+			if(site == "twitch" || site == "smashcast" || site == "mixer" || site == "youtube" || site == "streamme"){
 				streamsite = site;
 			}
 			if(stream !== undefined){
