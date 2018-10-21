@@ -12,7 +12,10 @@ I like playing Jackbox Games with streamers.  While you can play games on your m
 * Twitch
 * Smashcast (formerly Hitbox)
 * Mixer (formerly Beam)
-* YouTube/YouTube Gaming
+* YouTube
+* StreamMe
+* Mobcrush
+* Vimm
 
 ## How do I use it?
 

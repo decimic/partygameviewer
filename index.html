@@ -16,6 +16,8 @@
 					<option value="mixer">Mixer</option>
 					<option value="youtube">YouTube</option>
 					<option value="streamme">StreamMe</option>
+					<option value="mobcrush">Mobcrush</option>
+					<option value="vimm">Vimm</option>
 				</select>
 				<input type="text" name="streamusername" id="streamusername" placeholder="Twitch Username">
 				<button type="button" name="submitstream" id="submitstream">Go</button>
@@ -60,17 +62,25 @@
 					$(".chat").attr('src', "https://www.smashcast.tv/embed/chat/" + streamusername + "?autoconnect=true");
 					document.title = streamusername + " on Smashcast - Party Game Stream Viewer";
 				} else if (streamsite == "mixer") {
-					$(".stream").attr('src', "https://www.mixer.com/embed/player/" + streamusername);
+					$(".stream").attr('src', "https://www.mixer.com/embed/player/" + streamusername + "?disableCostream=1");
 					$(".chat").attr('src', "https://www.mixer.com/embed/chat/" + streamusername);
 					document.title = streamusername + " on Mixer - Party Game Stream Viewer";
 				} else if (streamsite == "youtube") {
-					$(".stream").attr('src', "https://gaming.youtube.com/embed/" + streamusername + "?autoplay=1");
-					$(".chat").attr('src', "https://gaming.youtube.com/live_chat?v=" + streamusername + "&embed_domain=decimic.github.io");
+					$(".stream").attr('src', "https://www.youtube.com/embed/" + streamusername + "?autoplay=1");
+					$(".chat").attr('src', "https://www.youtube.com/live_chat?v=" + streamusername + "&embed_domain=decimic.github.io");
 					document.title = "Party Game Stream Viewer";
 				} else if (streamsite == "streamme") {
 					$(".stream").attr('src', "https://www.stream.me/stream-embed/" + streamusername + "/fullframe?hideChat=true");
 					$(".chat").attr('src', "https://www.stream.me/stream-embed/" + streamusername + "/chat-only");
 					document.title = "Party Game Stream Viewer";
+				} else if (streamsite == "mobcrush") {
+					$(".stream").attr('src', "https://www.mobcrush.com/" + streamusername + "/embed");
+					$(".chat").attr('src', "https://www.mobcrush.com/" + streamusername + "/chat");
+					document.title = streamusername + " on Mobcrush - Party Game Stream Viewer";
+				} else if (streamsite == "vimm") {
+					$(".stream").attr('src', "https://www.vimm.tv/@" + streamusername + "/embed");
+					$(".chat").attr('src', "https://www.vimm.tv/chat/" + streamusername);
+					document.title = streamusername + " on Vimm - Party Game Stream Viewer";
 				}
 			}
 			function changesite() {
@@ -85,6 +95,10 @@
 					document.getElementsByName('streamusername')[0].placeholder = 'YouTube Video ID';
 				} else if (streamsite == "streamme") {
 					document.getElementsByName('streamusername')[0].placeholder = 'StreamMe Name';
+				} else if (streamsite == "mobcrush") {
+					document.getElementsByName('streamusername')[0].placeholder = 'Mobcrush Username';
+				} else if (streamsite == "vimm") {
+					document.getElementsByName('streamusername')[0].placeholder = 'Vimm Username (no @)';
 				}
 			}
 			function changegame(gamename) {
@@ -128,7 +142,7 @@
 			site = getUrlParameter("site").toLowerCase();
 			stream = getUrlParameter("stream");
 			game = getUrlParameter("game").toLowerCase();
-			if(site == "twitch" || site == "smashcast" || site == "mixer" || site == "youtube" || site == "streamme"){
+			if(site == "twitch" || site == "smashcast" || site == "mixer" || site == "youtube" || site == "streamme" || site == "mobcrush" || site == "vimm"){
 				streamsite = site;
 			}
 			if(stream !== undefined){
