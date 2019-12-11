@@ -7,15 +7,16 @@ I like playing Jackbox Games with streamers.  While you can play games on your m
 ## Currently supports the following party games:
 * Jackbox Games
 * Use Your Words
+* Pretend You're Xyzzy
+* Azala
 
 ## Currently supports the following stream platforms:
 * Twitch
 * Smashcast (formerly Hitbox)
 * Mixer (formerly Beam)
 * YouTube
-* StreamMe
 * Mobcrush
-* Vimm
+* Vimm (stream only)
 
 ## How do I use it?
 

@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Party Game Stream Viewer</title>
-		<meta name="description" content="Easily play Jackbox games or Use Your Words while watching the streamer you are playing with at the same time!">
+		<meta name="description" content="Easily play Jackbox games and other party games while watching the streamer you are playing with at the same time!">
 		<link rel="stylesheet" href="style.css" />
 		<script language="javascript" type="text/javascript">
 			if (window!= top) top.location.href = location.href;
@@ -15,26 +15,28 @@
 					<option value="smashcast">Smashcast</option>
 					<option value="mixer">Mixer</option>
 					<option value="youtube">YouTube</option>
-					<option value="streamme">StreamMe</option>
 					<option value="mobcrush">Mobcrush</option>
-					<option value="vimm">Vimm</option>
+					<option value="vimm">Vimm TV</option>
 				</select>
 				<input type="text" name="streamusername" id="streamusername" placeholder="Twitch Username">
 				<button type="button" name="submitstream" id="submitstream">Go</button>
 				<span style="float: right;"><button type="button" name="directlink" id="directlink">Get Direct Link</button></span>
 			</div>
 			<div class="streamframe">
-				<iframe src="help.html" width="300" height="150" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" class="stream"></iframe>
+				<iframe src="help.html" width="300" height="150" frameborder="0" scrolling="yes" allowfullscreen="allowfullscreen" class="stream"></iframe>
 			</div>
 			<div class="chatframe">
-				<iframe src="news.html" width="300" height="150" frameborder="0" scrolling="no" class="chat"></iframe>
+				<iframe src="news.html" width="300" height="150" frameborder="0" scrolling="yes" class="chat"></iframe>
 			</div>
 		</div>
 		<div class="gamesite">
 			<div class="choosegame">
+				<span style="float: left;"><button type="button" name="openstream" id="openstream">Open Stream</button></span>
 				<select name="gamename" id="gamename">
 					<option value="jackbox">Jackbox</option>
 					<option value="useyourwords">Use Your Words</option>
+					<option value="xyzzy">Pretend You're Xyzzy (beta)</option>
+					<option value="azala">Azala (beta)</option>
 				</select>
 				<button type="button" name="submitgame" id="submitgame">Go</button>
 			</div>
@@ -69,17 +71,13 @@
 					$(".stream").attr('src', "https://www.youtube.com/embed/" + streamusername + "?autoplay=1");
 					$(".chat").attr('src', "https://www.youtube.com/live_chat?v=" + streamusername + "&embed_domain=decimic.github.io");
 					document.title = "Party Game Stream Viewer";
-				} else if (streamsite == "streamme") {
-					$(".stream").attr('src', "https://www.stream.me/stream-embed/" + streamusername + "/fullframe?hideChat=true");
-					$(".chat").attr('src', "https://www.stream.me/stream-embed/" + streamusername + "/chat-only");
-					document.title = "Party Game Stream Viewer";
 				} else if (streamsite == "mobcrush") {
 					$(".stream").attr('src', "https://www.mobcrush.com/" + streamusername + "/embed");
 					$(".chat").attr('src', "https://www.mobcrush.com/" + streamusername + "/chat");
 					document.title = streamusername + " on Mobcrush - Party Game Stream Viewer";
 				} else if (streamsite == "vimm") {
-					$(".stream").attr('src', "https://www.vimm.tv/@" + streamusername + "/embed");
-					$(".chat").attr('src', "https://www.vimm.tv/chat/" + streamusername);
+					$(".stream").attr('src', "https://www.vimm.tv/" + streamusername + "/embed");
+					$(".chat").attr('src', "about:blank" + streamusername);
 					document.title = streamusername + " on Vimm - Party Game Stream Viewer";
 				}
 			}
@@ -93,12 +91,10 @@
 					document.getElementsByName('streamusername')[0].placeholder = 'Mixer Username';
 				} else if (streamsite == "youtube") {
 					document.getElementsByName('streamusername')[0].placeholder = 'YouTube Video ID';
-				} else if (streamsite == "streamme") {
-					document.getElementsByName('streamusername')[0].placeholder = 'StreamMe Name';
 				} else if (streamsite == "mobcrush") {
 					document.getElementsByName('streamusername')[0].placeholder = 'Mobcrush Username';
 				} else if (streamsite == "vimm") {
-					document.getElementsByName('streamusername')[0].placeholder = 'Vimm Username (no @)';
+					document.getElementsByName('streamusername')[0].placeholder = 'Vimm Username';
 				}
 			}
 			function changegame(gamename) {
@@ -108,6 +104,12 @@
 				}
 				if (gamename == "useyourwords") {
 					$(".game").attr('src', "https://wordsgame.lol");
+				}
+				if (gamename == "xyzzy") {
+					$(".game").attr('src', "https://pretendyoure.xyz/zy/");
+				}
+				if (gamename == "azala") {
+					$(".game").attr('src', "https://azala.info");
 				}
 			}
 			$(function () {
@@ -119,6 +121,21 @@
 				});
 				$("#directlink").click(function () {
 					prompt("Here is the direct link to show this stream in the viewer:","https://decimic.github.io/partygameviewer/?site=" + streamsite + "&stream=" + streamname + "&game=" + gamesite)
+				});
+				$("#openstream").click(function () {
+					if (streamsite == "twitch") {
+					window.open("http://www.twitch.tv/" + streamname)
+					} else if (streamsite == "smashcast") {
+					window.open("http://www.smashcast.tv/" + streamname)
+					} else if (streamsite == "mixer") {
+					window.open("http://www.mixer.com/" + streamname)
+					} else if (streamsite == "youtube") {
+					window.open("http://www.youtube.com/watch?v=" + streamname)
+					} else if (streamsite == "mobcrush") {
+					window.open("http://www.mobcrush.com/" + streamname)
+					} else if (streamsite == "vimm") {
+					window.open("http://www.vimm.tv/" + streamname)
+					}
 				});
 			});
 			document.getElementById("streamusername").addEventListener("keyup", function (event) {
@@ -142,17 +159,21 @@
 			site = getUrlParameter("site").toLowerCase();
 			stream = getUrlParameter("stream");
 			game = getUrlParameter("game").toLowerCase();
-			if(site == "twitch" || site == "smashcast" || site == "mixer" || site == "youtube" || site == "streamme" || site == "mobcrush" || site == "vimm"){
+			if(site == "twitch" || site == "smashcast" || site == "mixer" || site == "youtube" || site == "mobcrush" || site == "vimm"){
 				streamsite = site;
+			} else {
+				streamsite = "twitch";
 			}
 			if(stream !== undefined){
 				streamusername = stream;
 				changestream(stream);
 			}
-			if(game == "jackbox" || game == "useyourwords"){
+			if(game == "jackbox" || game == "useyourwords" || game == "xyzzy" || game == "azala"){
 				gamename = game;
 				changegame(game);
-			}	
+			} else {
+				gamename = "jackbox"
+			}
 		</script>
 	</body>
 </html>

@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Use Your Words Bug</title>
+		<title>Party Game Viewer News</title>
 		<style type="text/css">
 			body {
 				font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -10,14 +10,27 @@
 		</style>
 	</head>
 	<body>
-		<h3>Mobcrush and Vimm Support Added!</h3>
-		<p>Support has been added for Mobcrush and Vimm!</p>
-		<h3>URL Parameters Added!</h3>
-		<p>You can now directly link for the viewer to go right to that stream!  (To make it easier, I've made the Get Direct Link button!)</p>
+		<h3>December 2019 Updates</h3>
+		<ul>
+			<li>StreamMe support has been removed (site shut down earlier this year, RIP)</li>
+			<li>Beta support has been added for Pretend You're Xyzzy and Azala, both which are Cards Against Humanity clones. For now, you'll have to browse for the game in question. Improved support for these games are planned which will allow you to manually insert a direct URL to a game.</li>
+			<li>A button to open the stream itself has been added.</li>
+		</ul>
+		<h3>Limitations</h3>
+		<ul>
+			<li>Embeds do not count as organic viewers towards partnership on Twitch.</li>
+			<li>Moderation tools, bits, and whispers are not available in embedded Twitch chat.</li>
+			<li>Channel Points cannot be earned through embeds on Twitch.</li>
+			<li>Extensions are not available through embeds on Twitch.</li>
+			<li>MixrElixr and other browser extensions for Mixer will not work. Smashcast+ will also not work. (FFZ and BTTV do appear to work on Twitch.)</li>
+			<li>Vimm TV Chat is not available to embed.</li>
+		</ul>
+		<h3>URL Parameters Available!</h3>
+		<p>You can directly link for the viewer to go right to that stream!  (To make it easier, I've made the Get Direct Link button!)</p>
 		<h3>How to use the parameters:</h3>
-		<p><strong style="font-family: Courier New, Courier, monospace;">site=</strong> - What streaming platform to use.  Acceptable values are twitch, smashcast, mixer, youtube, streamme, mobcrush, vimm.  Defaults to Twitch if omitted.</p>
+		<p><strong style="font-family: Courier New, Courier, monospace;">site=</strong> - What streaming platform to use.  Acceptable values are twitch, smashcast, mixer, youtube, mobcrush, vimm.  Defaults to Twitch if omitted.</p>
 		<p><strong style="font-family: Courier New, Courier, monospace;">stream=</strong> - The username of the streamer, or the Video ID in the case of YouTube.  If omitted, shows the help and news sections instead.</p>
-		<p><strong style="font-family: Courier New, Courier, monospace;">game=</strong> - What game to load.  Acceptable values are jackbox and useyourwords.  Defaults to Jackbox if omitted.</p>
+		<p><strong style="font-family: Courier New, Courier, monospace;">game=</strong> - What game to load.  Acceptable values are jackbox, useyourwords, xyzzy, and azala.  Defaults to Jackbox if omitted.</p>
 		<h3>Example</h3>
 		<p><span style="font-family: Courier New, Courier, monospace;">https://decimic.github.io/partygameviewer/?site=mixer&amp;stream=randomuser123&amp;game=useyourwords</span></p>
 		<p>That URL will load up randomuser123's stream on Mixer, along with Use Your Words.</p>
