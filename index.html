@@ -2,6 +2,8 @@
 	<head>
 		<title>Party Game Stream Viewer</title>
 		<meta name="description" content="Easily play Jackbox games and other party games while watching the streamer you are playing with at the same time!">
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js" language="javascript" type="text/javascript"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" language="javascript" type="text/javascript"></script>
 		<link rel="stylesheet" href="style.css" />
 		<script language="javascript" type="text/javascript">
 			if (window!= top) top.location.href = location.href;
@@ -37,15 +39,15 @@
 					<option value="useyourwords">Use Your Words</option>
 					<option value="xyzzy">Pretend You're Xyzzy (beta)</option>
 					<option value="azala">Azala (beta)</option>
+					<option value="skribblio">Skribbl.io (beta)</option>
+					<option value="gartic">Gartic.io (beta)</option>
 				</select>
 				<button type="button" name="submitgame" id="submitgame">Go</button>
 			</div>
 			<div class="gameframe">
-				<iframe src="https://jackbox.tv" width="750" height="844" frameborder="0" scrolling="yes" class="game"></iframe>
+				<iframe src="faq.html" width="750" height="844" frameborder="0" scrolling="yes" class="game"></iframe>
 			</div>
 		</div>
-		<script src="https://code.jquery.com/jquery-2.1.4.min.js" language="javascript" type="text/javascript"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" language="javascript" type="text/javascript"></script>
 		<script language="javascript" type="text/javascript">
 			var streamsite = "twitch";
 			var streamname = "twitch";
@@ -53,6 +55,7 @@
 			var streamframe = $(".stream");
 			var chatframe = $(".chat");
 			var gameframe = $(".game");
+			var gameurl;
 			function changestream(streamusername) {
 				streamname = streamusername;
 				if (streamsite == "twitch") {
@@ -99,17 +102,23 @@
 			}
 			function changegame(gamename) {
 				gamesite = gamename;
-				if (gamename == "jackbox") {
+				if (gamesite == "jackbox") {
 					$(".game").attr('src', "https://jackbox.tv");
 				}
-				if (gamename == "useyourwords") {
+				if (gamesite == "useyourwords") {
 					$(".game").attr('src', "https://wordsgame.lol");
 				}
-				if (gamename == "xyzzy") {
-					$(".game").attr('src', "https://pretendyoure.xyz/zy/");
+				if (gamesite == "xyzzy") {
+					$(".game").attr('src', gameurl);
 				}
-				if (gamename == "azala") {
-					$(".game").attr('src', "https://azala.info");
+				if (gamesite == "azala") {
+					$(".game").attr('src', gameurl);
+				}
+				if (gamesite == "skribblio") {
+					$(".game").attr('src', gameurl);
+				}
+				if (gamesite == "gartic") {
+					$(".game").attr('src', gameurl);
 				}
 			}
 			$(function () {
@@ -117,7 +126,16 @@
 					changestream($("#streamusername").val());
 				});
 				$("#submitgame").click(function () {
-					changegame($("#gamename").val());
+					if (gamesite == "xyzzy" || gamesite == "azala" || gamesite == "skribblio" || gamesite == "gartic") {
+						gameurl = prompt("URL of the game:","")
+						if (gameurl === "" || !gameurl) {
+							return;
+						} else {
+							changegame(gamesite);
+						}
+					} else {				
+						changegame($("#gamename").val());
+					}
 				});
 				$("#directlink").click(function () {
 					prompt("Here is the direct link to show this stream in the viewer:","https://decimic.github.io/partygameviewer/?site=" + streamsite + "&stream=" + streamname + "&game=" + gamesite)
@@ -159,6 +177,7 @@
 			site = getUrlParameter("site").toLowerCase();
 			stream = getUrlParameter("stream");
 			game = getUrlParameter("game").toLowerCase();
+			url = getUrlParameter("url").toLowerCase();
 			if(site == "twitch" || site == "smashcast" || site == "mixer" || site == "youtube" || site == "mobcrush" || site == "vimm"){
 				streamsite = site;
 			} else {
@@ -168,11 +187,43 @@
 				streamusername = stream;
 				changestream(stream);
 			}
-			if(game == "jackbox" || game == "useyourwords" || game == "xyzzy" || game == "azala"){
+			if(game == "jackbox" || game == "useyourwords"){
 				gamename = game;
 				changegame(game);
 			} else {
 				gamename = "jackbox"
+			}
+			if(game == "xyzzy"){
+				if (!url || url === "")
+				{
+					url = "http://www.pretendyoure.xyz";
+				} else {
+					gameurl = url;
+				}
+			}
+			if(game == "azala"){
+				if (!url || url === "")
+				{
+					url = "http://www.azala.info";
+				} else {
+					gameurl = url;
+				}
+			}
+			if(game == "skribblio"){
+				if (!url || url === "")
+				{
+					url = "http://www.skribbl.io";
+				} else {
+					gameurl = url;
+				}
+			}
+			if(game == "azala"){
+				if (!url || url === "")
+				{
+					url = "http://www.gartic.io";
+				} else {
+					gameurl = url;
+				}
 			}
 		</script>
 	</body>

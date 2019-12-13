@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>Party Game Viewer Help</title>
+		<style type="text/css">
+			body {
+				font-family: Verdana, Arial, Helvetica, sans-serif;
+				font-size: .9em;
+				background-color: #F1F1F1;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>Where did you get the idea for this?</h3>
+		<p>When some people play games like Jackbox on stream, they do not have a second monitor or a mobile device to use, and others perfer playing on the computer. What was painful about it that I had to keep switching tabs between the stream and the game, and sometimes I end up missing the opportunity to answer something because I was on the stream tab and not the game tab.  I did try putting my browser windows side-by-side, but that made the stream so tiny unless I condensed the chat, which I don't want to do because I want to see the chat as well.  Popping out the stream and chat can also be tedious.  I made this mainly for myself, so I would be able to play the Jackbox games while seeing the stream and chat at the same time, so I wouldn't miss something.</p>
+		
+		<h3>What sites are supported?</h3>
+		<p>Twitch, Smashcast, Mixer, YouTube, Mobcrush, and Vimm TV.</p>
+		
+		<h3>How do I use it?</h3>
+		<p>Simply select the platform the streamer is streaming on, type in their username (or Video ID for YouTube), select the game, and click Go!</p>
+		
+		<h3>I'm a streamer and want to provide an easy way to provide this to my viewers. How do I do that?</h3>
+		<p>You can click the "Get Direct Link" to get a URL that will automatically load your stream, and you can share that URL with your audience.</p>
+		
+		<h3>What games are supported?</h3>
+		<p>All Jackbox games and Use Your Words are currently supported. Pretend You're Xyzzy and Azala are currently in beta support.</p>
+		
+		<h3>Will you support [insert platform here]?</h3>
+		<p>I am open to adding more platforms, but if a site does not provide a way to embed at least the stream, I cannot support it.</p>
+		
+		<h3>Will you support [insert game here]?</h3>
+		<p>I am open to adding more games, but if a site does not allow embedding, I cannot support it. Also, this should go without saying that if the game is only playable in an app, and not on a website, I won't be able to support it.</p>
+		
+		<h3>Will there be a mobile version of this?</h3>
+		<p>I don't see a mobile version of this happening. The main reason is that the stream and game window would be too small to see, especially on phones.</p>
+		
+		<h3>I found a bug, or I have an idea or would like to suggest a game or platform for this. Where can I do that?!</h3>
+		<p>Feel free to submit an issue on <a href="https://github.com/decimic/partygameviewer" target="_blank">GitHub</a>, and I will look into it. Pull requests are also welcome.</p>
+		
+		<h3>How to use the parameters:</h3>
+		<p><strong style="font-family: Courier New, Courier, monospace;">site=</strong> - What streaming platform to use.  Acceptable values are twitch, smashcast, mixer, youtube, mobcrush, vimm.  Defaults to Twitch if omitted.</p>
+		<p><strong style="font-family: Courier New, Courier, monospace;">stream=</strong> - The username of the streamer, or the Video ID in the case of YouTube.  If omitted, shows the help and news sections instead.</p>
+		<p><strong style="font-family: Courier New, Courier, monospace;">game=</strong> - What game to load.  Acceptable values are jackbox, useyourwords, xyzzy, and azala.  Defaults to Jackbox if omitted.</p>
+		<h4>Example</h4>
+		<p><span style="font-family: Courier New, Courier, monospace;">https://decimic.github.io/partygameviewer/?site=mixer&amp;stream=randomuser123&amp;game=useyourwords</span></p>
+		<p>That URL will load up randomuser123's stream on Mixer, along with Use Your Words.</p>
+		
+		<h3>Limitations</h3>
+		<ul>
+			<li>Embeds do not count as organic viewers towards partnership on Twitch.</li>
+			<li>Moderation tools, bits, and whispers are not available in embedded Twitch chat.</li>
+			<li>Extensions are not available through embeds on Twitch.</li>
+			<li>Channel Points cannot be earned through embeds on Twitch.</li>
+			<li>There is no way to disable skill effects or rallies on the embedded Mixer chat.</li>
+			<li>MixPlay is unavailable through embeds on Mixer.</li>
+			<li>If a Mixer stream is in a costream, chats cannot be prevented from being merged. However, the stream can be prevented from showing other streams.</li>
+			<li>Most browser extensions, including MixrElixr, do not work. FFZ and BTTV do appear to work but may have limited functionality.</li>
+			<li>Some YouTube streams cannot be embedded (the streamer can disable this, and some channels may not have embedding available to them).</li>
+			<li>Vimm TV chat cannot be embedded.</li>
+		</ul>
+	</body>
+</html>
